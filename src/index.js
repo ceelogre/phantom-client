@@ -1,9 +1,9 @@
-import react from 'react'
-import ReactDOM from 'react-dom'
+import React, { useState} from 'react'
+import {render} from 'react-dom'
 
-export default () => {
-  ReactDOM.render(
-      <h1>Hello Spot</h1>
-    , document.getElementById('body-container')
-  )
+const App = () => {
+  const [state, setState] = useState('Hmm')
+  return <button onClick = { () => setState('Taken')}>{state}</button>
 }
+
+render(<App />, document.getElementById('body-container'))
