@@ -1,9 +1,11 @@
 import React, { useState} from 'react'
 import {render} from 'react-dom'
+import Layout from './components/index'
 
 const App = () => {
-  const [state, setState] = useState('Hmm')
-  return <button onClick = { () => setState('Taken')}>{state}</button>
+  return (
+   <Layout />
+  )
 }
 
 render(<App />, document.getElementById('body-container'))
