@@ -11,6 +11,16 @@ module.exports = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.(scss)$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'] //All loaders are necessary for sass to load
+      },
+      {
+        test: /\.jpg$/,
+        use: [{
+          loader: 'url-loader'
+        }]
       }
     ]
   },
@@ -23,8 +33,9 @@ module.exports = {
     filename: 'main.js'
   },
   devServer: {
+    inline: 'source-map',
     contentBase: path.resolve(__dirname, 'dist'),
-    //open: true, //Immediatelys makes the app available at a given port
+    open: true, //Immediatelys makes the app available at a given port
     //publicPath: '/dist', DEV
   },
   plugins: [
