@@ -4,6 +4,7 @@
   "description": "modern mobility solution",
   "private": "true",
   "dependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "bootstrap": "^4.5.3",
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.0",
