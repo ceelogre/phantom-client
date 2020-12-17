@@ -1,12 +1,13 @@
 //This is where all dispatched actions are triaged
+import {GET_USERS} from '../actions/index'
 
-const usersReducer = (state ={}, action) => {
+const usersReducer = (state ={ 'users': {}}, action) => {
   switch(action.type) {
     case GET_USERS: 
-      return [
+      return {
         ...state,
-        action.users
-      ]
+        users: data
+     }
     default: 
       return state
   }
