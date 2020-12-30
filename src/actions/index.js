@@ -1,23 +1,41 @@
 import Store from '../../store'
 //Action types
+const GETTING_USERS = 'GETTING USERS'
 const GET_USERS = 'GET USERS'
+
+const gettingUsers = () => {
+  return {
+    type: GETTING_USERS
+  }
+}
+const getUsers = (payload) => {
+  return {
+    type: GET_USERS,
+    users: payload.body
+  }
+}
 
 const backendURI = 'http://localhost:3002/users'
 
 //Get users action creator
-const getUsers = async () => {
+const getUsersAsync = () => async (dispatch) => {
   //Store.subscribe(getUsers())
-  const res = await fetch(backendURI)
-  if (!res.ok)
-    throw Error(res.statusText)
-  await res.json()
-  console.log(Store.getState())
-  Store.dispatch({
-    type: GET_USERS,
-    data: res.body
+  dispatch({
+    type: GETTING_USERS
   })
-  console.log(Store.getState())
+  try {
+   const res = await fetch(backendURI)
+    if (!res.ok)
+      throw Error(res.statusText)
+    jsontData = await res.json()
+    console.log(Store.getState())
+    return dispatch({
+        type: GET_USERS,
+        users: payload.body
+    })
+  } catch(e ) {
+    console.error(e)
+  }
 }
 
-getUsers()
-export {GET_USERS}
+export {GET_USERS, GETTING_USERS, getUsersAsync}
